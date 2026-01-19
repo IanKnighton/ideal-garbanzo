@@ -71,7 +71,7 @@ jobs:
     # Outputs to the PR as a comment.
     terraform-plan:
         name: Terraform Plan
-        runs-on: [self-hosted, linux, x64, platform]
+        runs-on: [ubuntu-latest]
         needs: [release-dry-run]
         permissions:
             contents: "read"
@@ -168,7 +168,7 @@ jobs:
 
     terraform-apply:
         name: "Apply Terraform"
-        runs-on: [self-hosted, linux, x64, platform]
+        runs-on: [ubuntu-latest]
         needs: ["docker-push", "release-tag"]
         permissions:
             contents: "read"
