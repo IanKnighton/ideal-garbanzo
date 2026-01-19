@@ -124,6 +124,8 @@ jobs:
                   terraform plan -input=false -out=workspace.plan \
                       -var="repository_name=${{ github.event.repository.name }}" \
                       -var="container_image=${{ env.ARTIFACT_REPOSITORY }}/${{ env.DEPLOYMENT_NAME }}:${{ needs.release-dry-run.outputs.DRY_RUN_TAG }}" \
+                      -var="default_project=${{ env.PROJECT_ID }}" \
+                      -var="default_region=${{ env.LOCATION }}" \
 
             - name: Create String Output
               id: tf-plan-string
@@ -204,6 +206,8 @@ jobs:
                   terraform apply -auto-approve -input=false \
                       -var="repository_name=${{ github.event.repository.name }}" \
                       -var="container_image=${{ env.ARTIFACT_REPOSITORY }}/${{ env.DEPLOYMENT_NAME }}:${{ needs.release-tag.outputs.RELEASE_TAG }}" \
+                      -var="default_project=${{ env.PROJECT_ID }}" \
+                      -var="default_region=${{ env.LOCATION }}" \
 
     docker-push:
         name: "Push Image"
