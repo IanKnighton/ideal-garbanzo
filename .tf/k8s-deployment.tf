@@ -43,7 +43,7 @@ resource "kubernetes_deployment_v1" "deployment" {
 
           liveness_probe {
             http_get {
-              path = "/"
+              path = "/livez"
               port = 80
             }
 
@@ -53,7 +53,7 @@ resource "kubernetes_deployment_v1" "deployment" {
 
           readiness_probe {
             http_get {
-              path = "/"
+              path = "/readyz"
               port = 80
             }
 

@@ -26,7 +26,7 @@ variable "repository_name" {
 variable "container_image" {
   description = "The container image to deploy"
   type        = string
-  default     = "nginx:1.21.6" # Replace with your desired container image
+  default     = "us-docker.pkg.dev/jump-test-ik/ideal-garbanzo/app:20260119.3" # Replace with your desired container image
 }
 
 variable "instance_name" {
