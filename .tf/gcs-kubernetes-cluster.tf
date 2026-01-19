@@ -1,3 +1,6 @@
+# Create a GKE cluster with a preemptible node pool
+# This is bare bones stuff, but it's enough for you to get started.
+# Note that I create a service account for the nodes, as per Google recommendations.
 resource "random_pet" "service_account_prefix" {
   length    = 2
   separator = "-"

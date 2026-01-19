@@ -1,3 +1,6 @@
+# Create a Kubernetes deployment
+# Another bare bones example, but enough to get you started.
+# The GitHub Actions workflow will update the image. 
 resource "kubernetes_deployment_v1" "deployment" {
   metadata {
     name = var.instance_name
@@ -63,6 +66,8 @@ resource "kubernetes_deployment_v1" "deployment" {
   }
 }
 
+# Create a LoadBalancer service to expose the deployment
+# You can get the external IP with: kubectl get services
 resource "kubernetes_service" "service" {
   metadata {
     name = "${var.instance_name}-service"
