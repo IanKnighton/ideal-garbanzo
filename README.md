@@ -1,5 +1,7 @@
 # Google Kubernetes Deployment Example
 
+[![Deploy](https://github.com/IanKnighton/ideal-garbanzo/actions/workflows/deploy.yml/badge.svg)](https://github.com/IanKnighton/ideal-garbanzo/actions/workflows/deploy.yml)
+
 I failed a technical assessment pretty miserably, so I wanted to make sure it never happened again. Okay, well, **never** is a strong word, but at least I now have my own reference point on how to make this all work.
 
 ## What this does:
