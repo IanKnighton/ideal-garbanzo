@@ -6,13 +6,19 @@ resource "random_pet" "service_account_prefix" {
   separator = "-"
 }
 
+resource "random_integer" "cluster_id" {
+  min = 1
+  max = 10000
+}
+
+
 resource "google_service_account" "default" {
   account_id   = random_pet.service_account_prefix.id
   display_name = "Demo Service Account"
 }
 
 resource "google_container_cluster" "primary" {
-  name     = "${var.repository_name}-cluster"
+  name     = "${var.repository_name}-cluster-${random_integer.cluster_id.result}"
   location = var.default_region
 
   remove_default_node_pool = true

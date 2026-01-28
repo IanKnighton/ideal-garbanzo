@@ -43,23 +43,38 @@ resource "kubernetes_deployment_v1" "deployment" {
 
           liveness_probe {
             http_get {
-              path = "/livez"
+              path = "/"
               port = 80
+
+              http_header {
+                name  = "X-Custom-Header"
+                value = "Awesome"
+              }
             }
 
             initial_delay_seconds = 3
             period_seconds        = 3
           }
 
-          readiness_probe {
-            http_get {
-              path = "/readyz"
-              port = 80
-            }
+          # liveness_probe {
+          #   http_get {
+          #     path = "/livez"
+          #     port = 80
+          #   }
 
-            initial_delay_seconds = 3
-            period_seconds        = 3
-          }
+          #   initial_delay_seconds = 3
+          #   period_seconds        = 3
+          # }
+
+          # readiness_probe {
+          #   http_get {
+          #     path = "/readyz"
+          #     port = 80
+          #   }
+
+          #   initial_delay_seconds = 3
+          #   period_seconds        = 3
+          # }
         }
       }
     }
@@ -68,7 +83,7 @@ resource "kubernetes_deployment_v1" "deployment" {
 
 # Create a LoadBalancer service to expose the deployment
 # You can get the external IP with: kubectl get services
-resource "kubernetes_service" "service" {
+resource "kubernetes_service_v1" "service" {
   metadata {
     name = "${var.instance_name}-service"
     annotations = {
