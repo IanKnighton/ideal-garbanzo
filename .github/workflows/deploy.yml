@@ -14,6 +14,8 @@ env:
     ARTIFACT_REGISTRY: "us-docker.pkg.dev"
     ARTIFACT_REPOSITORY: "us-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ github.event.repository.name }}"
 
+    GITHUB_TOKEN: ${{ secrets.GH_API_TOKEN }}
+
     DEPLOYMENT_NAME: "app"
     PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
     CLUSTER_NAME: ${{ secrets.GCP_CLUSTER_NAME }}
