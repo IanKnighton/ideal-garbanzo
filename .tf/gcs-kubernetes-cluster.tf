@@ -44,3 +44,11 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     ]
   }
 }
+
+# Grant the service account the necessary roles for Artifact Registry access
+# You can add more roles as needed
+resource "google_project_iam_member" "default_sa_artifact_registry_access" {
+  project = var.default_project
+  role    = "roles/artifactregistry.reader"
+  member  = "serviceAccount:${google_service_account.default.email}"
+}
