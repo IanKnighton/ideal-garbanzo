@@ -1,9 +1,5 @@
 terraform {
   required_providers {
-    github = {
-      source  = "integrations/github"
-      version = "6.10.1"
-    }
     google = {
       source  = "hashicorp/google"
       version = "~> 6.0"
@@ -23,11 +19,6 @@ terraform {
     bucket = "terraform-gcs-state-storage-ik" # TODO: Update bucket name
     prefix = "ideal-garbanzo/state"           # TODO: Update prefix
   }
-}
-
-# You'll need to provide a PAT with permission to access repo secrets. 
-provider "github" {
-  # Configuration options
 }
 
 provider "google" {

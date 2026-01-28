@@ -43,38 +43,23 @@ resource "kubernetes_deployment_v1" "deployment" {
 
           liveness_probe {
             http_get {
-              path = "/"
+              path = "/livez"
               port = 80
-
-              http_header {
-                name  = "X-Custom-Header"
-                value = "Awesome"
-              }
             }
 
             initial_delay_seconds = 3
             period_seconds        = 3
           }
 
-          # liveness_probe {
-          #   http_get {
-          #     path = "/livez"
-          #     port = 80
-          #   }
+          readiness_probe {
+            http_get {
+              path = "/readyz"
+              port = 80
+            }
 
-          #   initial_delay_seconds = 3
-          #   period_seconds        = 3
-          # }
-
-          # readiness_probe {
-          #   http_get {
-          #     path = "/readyz"
-          #     port = 80
-          #   }
-
-          #   initial_delay_seconds = 3
-          #   period_seconds        = 3
-          # }
+            initial_delay_seconds = 3
+            period_seconds        = 3
+          }
         }
       }
     }
