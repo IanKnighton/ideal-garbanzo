@@ -124,5 +124,5 @@ func healthHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func getGoVersion() string {
-	return fmt.Sprintf("%s", time.Now().Format("2006-01-02"))
+	return time.Now().Format("2006-01-02")
 }
